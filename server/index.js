@@ -12,7 +12,7 @@ mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true 
 app.use(cors());
 app.use(express.json());
 
-// Create a Mongoose model for weather data
+// Creates a Mongoose model for weather data
 const WeatherData = mongoose.model('WeatherData', {
   city: String,
   country: String,
@@ -21,7 +21,7 @@ const WeatherData = mongoose.model('WeatherData', {
   icon: String,
 });
 
-// Route to handle storing weather data
+// Route to handle the storing weather data in the DB
 app.post('/api/weather', async (req, res) => {
   try {
     // Extract weather data from request body
@@ -36,10 +36,10 @@ app.post('/api/weather', async (req, res) => {
       icon,
     });
 
-    // Save the weather data to the database
+    // Save the weather data to the DB
     await weatherData.save();
 
-    // Respond with success message
+    // Responds with success message if successful, otherwise sends an error response
     res.json({ message: 'Weather data saved successfully' });
   } catch (error) {
     console.error('Error saving weather data:', error);
@@ -47,7 +47,7 @@ app.post('/api/weather', async (req, res) => {
   }
 });
 
-// Start the server
+// Start the server on the specified port
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
