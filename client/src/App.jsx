@@ -1,6 +1,12 @@
+/**
+ * Fetches weather data from the OpenWeatherMap API based on the user's current location.
+ * Uses the latitude and longitude obtained from the browser's geolocation API to construct the API URL.
+ * Calls the fetchWeatherData function to retrieve the weather data and save it to the state.
+ **/
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './App.css';
+
 
 const apikey = process.env.REACT_APP_WEATHER_API_KEY;
 
