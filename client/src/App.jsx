@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import './App.css'; 
+import './App.css';
 
 const apikey = process.env.REACT_APP_WEATHER_API_KEY;
 
@@ -167,10 +167,10 @@ function App() {
 
       <main>
         <div className="weather">
-          <h2 id="city">Delhi,IN</h2>
+          <h2 id="city">Newport, ME</h2>
           <div className="temp-box">
             <img src="/weathericon.png" alt="" id="img" />
-            <p id="temperature">26 °C</p>
+            <p id="temperature">4 °C</p>
           </div>
           <span id="clouds">Broken Clouds</span>
         </div>
