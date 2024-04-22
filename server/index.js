@@ -6,7 +6,7 @@ const axios = require('axios');
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-const MONGODB_URI = 'mongodb+srv://sthompson7720:OERWOawXf6Sc2FSg@myweatherdb.lbqxbhz.mongodb.net/weatherforecast';
+const MONGODB_URI = process.env.MONGODB_URI;
 mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 
 app.use(cors());
