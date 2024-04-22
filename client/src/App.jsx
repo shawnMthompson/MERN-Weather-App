@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './App.css'; 
 
-const apikey = "0cc0cdebf7ad050c17093276415043be";
+const apikey = process.env.REACT_APP_WEATHER_API_KEY;
 
 function App() {
   const [city, setCity] = useState('');
