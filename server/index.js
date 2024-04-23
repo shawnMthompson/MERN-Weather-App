@@ -21,7 +21,7 @@ const WeatherData = mongoose.model('WeatherData', {
   icon: String,
 });
 
-// Route to handle the storing weather data in the DB
+// Route to handle the storing weather data in the database
 app.post('/api/weather', async (req, res) => {
   try {
     // Extract weather data from request body
@@ -36,7 +36,7 @@ app.post('/api/weather', async (req, res) => {
       icon,
     });
 
-    // Save the weather data to the DB
+    // Save the weather data to the database
     await weatherData.save();
 
     // Responds with success message if successful, otherwise sends an error response
