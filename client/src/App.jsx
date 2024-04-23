@@ -10,6 +10,7 @@ import './App.css';
 
 const apikey = process.env.REACT_APP_WEATHER_API_KEY;
 
+// App component
 function App() {
   const [city, setCity] = useState('');
   const [weatherData, setWeatherData] = useState(null);
@@ -25,6 +26,7 @@ function App() {
     }
   }, []);
 
+  // Fetches weather data from the OpenWeatherMap API using the provided URL.
   const fetchWeatherData = async (url) => {
     try {
       const response = await axios.get(url);
@@ -39,6 +41,7 @@ function App() {
     }
   };
 
+  // Fetches weather data based on the city name entered by the user.
   const searchByCity = async () => {
     try {
       const urlsearch = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apikey}&units=imperial`;
@@ -55,6 +58,7 @@ function App() {
     setCity('');
   };
 
+  // Save weather data to the database
   const saveWeatherData = async (data) => {
     try {
       const response = await axios.post('http://localhost:5000/api/weather', {
@@ -73,12 +77,14 @@ function App() {
   const weatherReport = async (data) => {
     const urlcast = `http://api.openweathermap.org/data/2.5/forecast?q=${data.name}&appid=${apikey}&units=imperial`;
     try {
+      // Fetch forecast data
       const response = await axios.get(urlcast);
       const forecast = response.data;
       console.log(forecast.city);
       hourForecast(forecast);
       dayForecast(forecast);
 
+      // Display current weather data
       console.log(data);
       document.getElementById('city').innerText = data.name + ', ' + data.sys.country;
       console.log(data.name, data.sys.country);
@@ -89,6 +95,7 @@ function App() {
       document.getElementById('clouds').innerText = data.weather[0].description;
       console.log(data.weather[0].description);
 
+      // Display weather icon
       let icon1 = data.weather[0].icon;
       let iconurl = "http://api.openweathermap.org/img/w/" + icon1 + ".png";
       document.getElementById('img').src = iconurl;
@@ -97,6 +104,7 @@ function App() {
     }
   };
 
+  // Display hourly forecast
   const hourForecast = (forecast) => {
     document.querySelector('.templist').innerHTML = '';
     for (let i = 0; i < 5; i++) {
@@ -127,6 +135,7 @@ function App() {
     }
   };
 
+  // Display daily forecast
   const dayForecast = (forecast) => {
     document.querySelector('.weekF').innerHTML = '';
     for (let i = 0; i < forecast.list.length; i +=8) {
@@ -152,6 +161,7 @@ function App() {
     }
   };
 
+  // Render the App component
   return (
     <div>
       <div className="header">
@@ -174,12 +184,12 @@ function App() {
 
       <main>
         <div className="weather">
-          <h2 id="city">Newport, ME</h2> {/* The city name will be rendered here */}
+          <h2 id="city"></h2> {/* The city name will be rendered here */}
           <div className="temp-box">
             <img src="/weathericon.png" alt="" id="img" />
-            <p id="temperature">4 °C</p> {/* The temperature will be rendered here */}
+            <p id="temperature"></p> {/* The temperature will be rendered here */}
           </div>
-          <span id="clouds">Broken Clouds</span> {/* The weather description will be rendered here */}
+          <span id="clouds"></span> {/* The weather description will be rendered here */}
         </div>
         <div className="divider1"></div>
 
@@ -202,4 +212,5 @@ function App() {
   );
 }
 
+// Export the App component
 export default App;
