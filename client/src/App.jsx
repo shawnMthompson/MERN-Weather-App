@@ -194,7 +194,7 @@ function App() {
         <div className="divider1"></div>
 
         <div className="forecstH">
-          <p className="cast-header">Upcoming forecast</p> {/* The hourly forecast header */}
+          <p className="cast-header">Hourly Forecast</p> {/* The hourly forecast header */}
           <div className="templist">
             {/* The hourly forecast will be rendered here */}
           </div>
@@ -203,7 +203,7 @@ function App() {
 
       <div className="forecstD">
         <div className="divider2"></div>
-        <p className="cast-header"> Next 5 days forecast</p> {/* The daily forecast header */}
+        <p className="cast-header">Daily Forecast</p> {/* The daily forecast header */}
         <div className="weekF">
           {/* The daily forecast will be rendered here */}
         </div>
