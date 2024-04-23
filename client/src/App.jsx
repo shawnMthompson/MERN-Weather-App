@@ -155,7 +155,6 @@ function App() {
   return (
     <div>
       <div className="header">
-        <h1>WEATHER APP</h1>
         <div>
           <input
             type="text"
@@ -170,9 +169,6 @@ function App() {
               }
             }}
           />
-          <button id="search" onClick={searchByCity}>
-            Search
-          </button>
         </div>
       </div>
 
