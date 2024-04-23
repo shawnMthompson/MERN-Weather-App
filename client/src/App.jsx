@@ -161,9 +161,14 @@ function App() {
             type="text"
             name=""
             id="input"
-            placeholder="Enter city name"
+            placeholder="Search for location..."
             value={city}
             onChange={(e) => setCity(e.target.value)}
+            onKeyPress={(e) => {
+              if (e.key === 'Enter') {
+                searchByCity();
+              }
+            }}
           />
           <button id="search" onClick={searchByCity}>
             Search
@@ -173,28 +178,28 @@ function App() {
 
       <main>
         <div className="weather">
-          <h2 id="city">Newport, ME</h2>
+          <h2 id="city">Newport, ME</h2> {/* The city name will be rendered here */}
           <div className="temp-box">
             <img src="/weathericon.png" alt="" id="img" />
-            <p id="temperature">4 °C</p>
+            <p id="temperature">4 °C</p> {/* The temperature will be rendered here */}
           </div>
-          <span id="clouds">Broken Clouds</span>
+          <span id="clouds">Broken Clouds</span> {/* The weather description will be rendered here */}
         </div>
         <div className="divider1"></div>
 
         <div className="forecstH">
-          <p className="cast-header">Upcoming forecast</p>
+          <p className="cast-header">Upcoming forecast</p> {/* The hourly forecast header */}
           <div className="templist">
-            {/* Hourly forecast will be rendered here */}
+            {/* The hourly forecast will be rendered here */}
           </div>
         </div>
       </main>
 
       <div className="forecstD">
         <div className="divider2"></div>
-        <p className="cast-header"> Next 4 days forecast</p>
+        <p className="cast-header"> Next 4 days forecast</p> {/* The daily forecast header */}
         <div className="weekF">
-          {/* Daily forecast will be rendered here */}
+          {/* The daily forecast will be rendered here */}
         </div>
       </div>
     </div>
