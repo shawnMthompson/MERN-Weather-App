@@ -18,7 +18,7 @@ function App() {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position) => {
         const { latitude, longitude } = position.coords;
-        const url = `http://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apikey}`;
+        const url = `http://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apikey}&units=imperial`;
 
         fetchWeatherData(url);
       });
@@ -41,7 +41,7 @@ function App() {
 
   const searchByCity = async () => {
     try {
-      const urlsearch = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apikey}`;
+      const urlsearch = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apikey}&units=imperial`;
       const response = await axios.get(urlsearch);
       const data = response.data;
       console.log(data);
@@ -71,7 +71,7 @@ function App() {
   };
 
   const weatherReport = async (data) => {
-    const urlcast = `http://api.openweathermap.org/data/2.5/forecast?q=${data.name}&appid=${apikey}`;
+    const urlcast = `http://api.openweathermap.org/data/2.5/forecast?q=${data.name}&appid=${apikey}&units=imperial`;
     try {
       const response = await axios.get(urlcast);
       const forecast = response.data;
@@ -83,8 +83,8 @@ function App() {
       document.getElementById('city').innerText = data.name + ', ' + data.sys.country;
       console.log(data.name, data.sys.country);
 
-      console.log(Math.floor(data.main.temp - 273));
-      document.getElementById('temperature').innerText = Math.floor(data.main.temp - 273) + ' °C';
+      console.log(Math.floor(data.main.temp));
+      document.getElementById('temperature').innerText = Math.floor(data.main.temp) + ' °F';
 
       document.getElementById('clouds').innerText = data.weather[0].description;
       console.log(data.weather[0].description);
@@ -112,7 +112,7 @@ function App() {
       time.innerText = (date.toLocaleTimeString(undefined, 'Asia/Kolkata')).replace(':00', '');
 
       let temp = document.createElement('p');
-      temp.innerText = Math.floor((forecast.list[i].main.temp_max - 273)) + ' °C' + ' / ' + Math.floor((forecast.list[i].main.temp_min - 273)) + ' °C';
+      temp.innerText = Math.floor((forecast.list[i].main.temp_max)) + ' °F' + ' / ' + Math.floor((forecast.list[i].main.temp_min)) + ' °F';
 
       div.appendChild(time);
       div.appendChild(temp);
@@ -129,7 +129,7 @@ function App() {
 
   const dayForecast = (forecast) => {
     document.querySelector('.weekF').innerHTML = '';
-    for (let i = 8; i < forecast.list.length; i += 8) {
+    for (let i = 0; i < forecast.list.length; i +=8) {
       console.log(forecast.list[i]);
       let div = document.createElement('div');
       div.setAttribute('class', 'dayF');
@@ -140,7 +140,7 @@ function App() {
       div.appendChild(day);
 
       let temp = document.createElement('p');
-      temp.innerText = Math.floor((forecast.list[i].main.temp_max - 273)) + ' °C' + ' / ' + Math.floor((forecast.list[i].main.temp_min - 273)) + ' °C';
+      temp.innerText = Math.floor((forecast.list[i].main.temp_max)) + ' °F' + ' / ' + Math.floor((forecast.list[i].main.temp_min)) + ' °F';
       div.appendChild(temp);
 
       let description = document.createElement('p');
@@ -193,7 +193,7 @@ function App() {
 
       <div className="forecstD">
         <div className="divider2"></div>
-        <p className="cast-header"> Next 4 days forecast</p> {/* The daily forecast header */}
+        <p className="cast-header"> Next 5 days forecast</p> {/* The daily forecast header */}
         <div className="weekF">
           {/* The daily forecast will be rendered here */}
         </div>
