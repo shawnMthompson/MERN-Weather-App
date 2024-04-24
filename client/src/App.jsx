@@ -95,7 +95,7 @@ function App() {
       document.getElementById('clouds').innerText = data.weather[0].description;
       console.log(data.weather[0].description);
 
-      // Display weather icon
+      // Display weather icon provided by the API
       let icon1 = data.weather[0].icon;
       let iconurl = "http://api.openweathermap.org/img/w/" + icon1 + ".png";
       document.getElementById('img').src = iconurl;
