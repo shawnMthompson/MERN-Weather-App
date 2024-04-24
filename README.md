@@ -14,4 +14,6 @@ Follow these steps to replicate this project on your local machine:
 7. Change directory `cd` to the client folder: `cd client`
 8. Start the application by running `npm start`
 
-Please note that you need Node.js and npm installed on your machine to run this project. 
+* End the application by hitting `ctrl+c` and entering `Y` when prompted to: Terminate the batch job (Y/N)?
+
+Please note that you need Node.js and npm installed on your machine to run this project.
