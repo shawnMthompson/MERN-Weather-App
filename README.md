@@ -13,6 +13,7 @@ Follow these steps to replicate this project on your local machine:
 6. Open the `.env` file in the server folder and add your MongoDB URI like this: MONGODB_URI=<your-mongodb_uri>
 7. Change directory `cd` to the client folder: `cd client`
 8. Start the application by running `npm start`
+9. Direct yourself to localhost:3000 on a JavaScript-enabled browser to view/interact with the application.
 
 * End the application by hitting `ctrl+c` in terminal and entering `Y` when prompted to: Terminate the batch job (Y/N)?
 
