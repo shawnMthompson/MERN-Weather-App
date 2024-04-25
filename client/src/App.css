@@ -5,11 +5,10 @@ html {
     height: 100%; 
 }
 body {
-    background: whitesmoke;
     padding: 1rem 5rem;
     font-family: 'Roboto', sans-serif;
     text-transform: capitalize;
-    background: linear-gradient(45deg, rgba(183, 204, 248, 0.717), rgba(7, 43, 127, 0.679)), url('https://img.freepik.com/free-photo/blue-sky-with-cloud-closeup_150588-124.jpg?t=st=1710145731~exp=1710149331~hmac=312231e34af28df68a64a9b006a4a627d0f623f0ba6e19eb23e5aceae935e41e&w=360');
+    background: black;
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
