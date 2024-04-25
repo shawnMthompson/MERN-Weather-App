@@ -173,7 +173,7 @@ function App() {
             placeholder="Search for location..."
             value={city}
             onChange={(e) => setCity(e.target.value)}
-            onKeyPress={(e) => {
+            onKeyDown={(e) => {
               if (e.key === 'Enter') {
                 searchByCity();
               }
