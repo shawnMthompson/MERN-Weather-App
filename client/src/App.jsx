@@ -107,9 +107,10 @@ function App() {
   // Display hourly forecast
   const hourForecast = (forecast) => {
     document.querySelector('.templist').innerHTML = '';
+    // Display the next 12 hours forecast in 5, 3-hour intervals (including initial time)
     for (let i = 0; i < 5; i++) {
       var date = new Date(forecast.list[i].dt * 1000);
-      console.log((date.toLocaleTimeString(undefined, 'Asia/Kolkata')).replace(':00', ''));
+      console.log((date.toLocaleTimeString(undefined, 'America/New_York')).replace(':00', ''));
 
       let hourR = document.createElement('div');
       hourR.setAttribute('class', 'next');
@@ -117,7 +118,7 @@ function App() {
       let div = document.createElement('div');
       let time = document.createElement('p');
       time.setAttribute('class', 'time');
-      time.innerText = (date.toLocaleTimeString(undefined, 'Asia/Kolkata')).replace(':00', '');
+      time.innerText = (date.toLocaleTimeString(undefined, 'America/New_York')).replace(':00', '');
 
       let temp = document.createElement('p');
       temp.innerText = Math.floor((forecast.list[i].main.temp_max)) + ' °F' + ' / ' + Math.floor((forecast.list[i].main.temp_min)) + ' °F';
@@ -145,7 +146,7 @@ function App() {
 
       let day = document.createElement('p');
       day.setAttribute('class', 'date');
-      day.innerText = new Date(forecast.list[i].dt * 1000).toDateString(undefined, 'Asia/Kolkata');
+      day.innerText = new Date(forecast.list[i].dt * 1000).toDateString(undefined, 'America/New_York');
       div.appendChild(day);
 
       let temp = document.createElement('p');
