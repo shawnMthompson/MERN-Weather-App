@@ -171,7 +171,7 @@ function App() {
             type="text"
             name=""
             id="input"
-            placeholder="Search for location..."
+            placeholder="🔍 Search for location..."
             value={city}
             onChange={(e) => setCity(e.target.value)}
             onKeyDown={(e) => {
@@ -179,6 +179,7 @@ function App() {
                 searchByCity();
               }
             }}
+            className="search-input"
           />
         </div>
       </div>
