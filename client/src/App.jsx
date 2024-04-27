@@ -92,7 +92,7 @@ function App() {
       console.log(Math.floor(data.main.temp));
       document.getElementById('temperature').innerText = Math.floor(data.main.temp) + ' °F';
 
-      document.getElementById('clouds').innerText = data.weather[0].description;
+      document.getElementById('condition').innerText = data.weather[0].description;
       console.log(data.weather[0].description);
 
       // Display weather icon provided by the API
@@ -183,33 +183,27 @@ function App() {
           />
         </div>
       </div>
-
-      <main>
-        <div className="weather">
-          <h2 id="city"></h2> {/* The city name will be rendered here */}
+  
+      <main className="weather-container">
+        <div className="daily-forecast">
+          <p className="cast-header">Daily Forecast</p>
+          <div className="weekF"></div>
+        </div>
+  
+        <div className="current-weather">
+          <h2 id="city"></h2>
           <div className="temp-box">
             <img src="/weathericon.png" alt="" id="img" />
-            <p id="temperature"></p> {/* The temperature will be rendered here */}
+            <p id="temperature"></p>
           </div>
-          <span id="clouds"></span> {/* The weather description will be rendered here */}
+          <span id="condition"></span>
         </div>
-        <div className="divider1"></div>
-
-        <div className="forecstH">
-          <p className="cast-header">Hourly Forecast</p> {/* The hourly forecast header */}
-          <div className="templist">
-            {/* The hourly forecast will be rendered here */}
-          </div>
+  
+        <div className="hourly-forecast">
+          <p className="cast-header">Hourly Forecast</p>
+          <div className="templist"></div>
         </div>
       </main>
-
-      <div className="forecstD">
-        <div className="divider2"></div>
-        <p className="cast-header">Daily Forecast</p> {/* The daily forecast header */}
-        <div className="weekF">
-          {/* The daily forecast will be rendered here */}
-        </div>
-      </div>
     </div>
   );
 }

@@ -3,62 +3,46 @@
 html{
     height: 100%;
 }
-body {
+body{
     padding: 1rem 5rem;
     font-family: 'Montserrat', sans-serif;
     text-transform: capitalize;
-    background: black;
+    background: rgb(20, 95, 100);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
 }
-.header{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-.header h1{
-    color: rgb(214, 147, 45);
-    text-decoration: underline;
-}
-#input {
+#input{
     font-size: 18px;
     padding: 5px 10px;
     outline: none;
     border: none;
     border-radius: 15px;
-    background: rgb(96, 98, 100);
+    background: white;
 }
 #search{
     background: none;
     padding: 5px 20px;
-    color: aliceblue;
+    color: white;
     outline: none;
-    background: cadetblue;
+    background: rgb(95 160 160);
     font-size: 17px;
     border-radius: 15px;
     cursor: pointer;
     border: none;
 }
 .search-input{
-    color: white;
+    color: black;
     font-family: 'Montserrat', sans-serif;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
 }
 .search-input::placeholder{
-    color: white;
-}
-.weather{
-    text-align: center;
-    color: aliceblue;
+    color: rgb(0, 0, 0);
 }
 #city{
-    font-size: 30px;
-}
-.weather img{
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    background: rgba(240, 248, 255, 0.408);
+    font-size: 50px;
 }
 #temperature{
     font-size: 50px;
@@ -72,9 +56,9 @@ body {
     justify-content: center;
     margin: 30px 0;
 }
-#clouds{
+#condition{
     font-size: 20px;
-    background: rgba(153, 205, 50, 0.778);
+    background: rgb(50, 100, 140);
     padding: 2px 20px;
     border-radius: 15px;
 }
@@ -86,48 +70,35 @@ main{
     margin: 0 50px;
     color: white;
 }
-.next{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 10px 0;
-}
-.next p,
-.next h3{
-    margin: 3px 0;
-}
-.forecstD{
-    margin: 20px 50px;
-    color: aliceblue;
-}
-.weekF{
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-}
 .cast-header{
-    color: aliceblue;
-    background: rgba(254, 189, 132, 0.539);
+    color: white;
+    background: rgb(50, 100, 140);
     width: max-content;
     padding: 5px 15px;
     border-radius: 20px;
-    font-size: 18px;
+    font-size: 24px;
     margin-bottom: 5px;
 }
-.divider1,
-.divider2{
-    background: rgba(254, 189, 132, 0.539);
-    height: 200px;
-    border-radius: 5px;
+.weather-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin: 1rem 0;
 }
-.divider2{
-    height: 5px;
-    width: 30%;
-    margin: 0 auto;
+.current-weather h2{
+    margin: 0;
+}
+.daily-forecast, .current-weather, .hourly-forecast{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    margin: 6rem 0;
+    text-align: center;
 }
 .time,
 .date{
-    color: rgb(254, 189, 132);
+    color: rgb(190, 170, 250);
 }
 .desc{
-    color: rgb(196, 255, 77);
+    color: rgb(170, 225, 55);
 }
