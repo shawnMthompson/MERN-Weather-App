@@ -13,7 +13,7 @@ const apikey = process.env.REACT_APP_WEATHER_API_KEY;
 // App component
 function App() {
   const [city, setCity] = useState('');
-  const [weatherData, setWeatherData] = useState(null);
+  const [setWeatherData] = useState(null);
   // Fetch weather data based on the user's current location (if the permission is granted)
   useEffect(() => {
     if (navigator.geolocation) {
