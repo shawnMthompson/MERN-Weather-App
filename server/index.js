@@ -4,7 +4,7 @@ const cors = require('cors');
 const axios = require('axios');
 
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 3000;
 
 const MONGODB_URI = process.env.MONGODB_URI;
 mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true });
@@ -40,14 +40,14 @@ app.post('/api/weather', async (req, res) => {
     await weatherData.save();
 
     // Responds with success message if successful, otherwise sends an error response
-    res.json({ message: 'Weather data saved successfully' });
+    res.json({ message: 'The weather data was saved successfully' });
   } catch (error) {
-    console.error('Error saving weather data:', error);
+    console.error('An error occured whilst saving weather data:', error);
     res.status(500).json({ error: 'Internal Server Error' });
   }
 });
 
 // Start the server on the specified port
 app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+  console.log(`The server is running on port ${PORT}`);
 });
