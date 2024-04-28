@@ -14,7 +14,7 @@ const apikey = process.env.REACT_APP_WEATHER_API_KEY;
 function App() {
   const [city, setCity] = useState('');
   const [weatherData, setWeatherData] = useState(null);
-
+  // Fetch weather data based on the user's current location (if the permission is granted)
   useEffect(() => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position) => {
@@ -53,7 +53,7 @@ function App() {
       // Send data to backend for storage
       saveWeatherData(data);
     } catch (error) {
-      console.error('Error fetching weather data:', error);
+      console.error('An error occured whilst fetching weather data:', error);
     }
     setCity('');
   };
@@ -70,7 +70,7 @@ function App() {
       });
       console.log('Weather data saved to database:', response.data);
     } catch (error) {
-      console.error('Error saving weather data to database:', error);
+      console.error('An error occured whilst saving weather data to database:', error);
     }
   };
 
@@ -100,7 +100,7 @@ function App() {
       let iconurl = "http://api.openweathermap.org/img/w/" + icon1 + ".png";
       document.getElementById('img').src = iconurl;
     } catch (error) {
-      console.error('Error fetching forecast data:', error);
+      console.error('An error occured whilst fetching forecast data:', error);
     }
   };
 
@@ -108,6 +108,7 @@ function App() {
   const hourForecast = (forecast) => {
     document.querySelector('.templist').innerHTML = '';
     // Display the next 12 hours forecast in 5, 3-hour intervals (including initial time)
+    // Provides the time, temperature, and weather description for each interval
     for (let i = 0; i < 5; i++) {
       var date = new Date(forecast.list[i].dt * 1000);
       console.log((date.toLocaleTimeString(undefined, 'America/New_York')).replace(':00', ''));
@@ -137,6 +138,7 @@ function App() {
   };
 
   // Display daily forecast
+  // Displays the forecast for the next 5 days in 24-hour intervals
   const dayForecast = (forecast) => {
     document.querySelector('.weekF').innerHTML = '';
     for (let i = 0; i < forecast.list.length; i +=8) {
@@ -163,6 +165,7 @@ function App() {
   };
 
   // Render the App component
+  // Weather data is returned from the API and displayed on the page
   return (
     <div>
       <div className="header">
