@@ -59,6 +59,7 @@ body{
     font-size: 24px;
     background: rgb(50, 100, 140);
     padding: 2px 20px;
+    border-radius: 20px;
 }
 main{
     display: grid;

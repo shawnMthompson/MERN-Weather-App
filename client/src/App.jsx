@@ -209,7 +209,7 @@ function App() {
       </main>
       <div>
         <footer>
-          <p>Disclaimer: I was unable to get state codes working for this project with OpenWeatherAPI, which is why you may notice (City), US instead of (City), State</p>
+          <p>Disclaimer: I was unable to get state codes working for this project with OpenWeatherAPI, which is why you may notice (City, US) instead of (City, State)</p>
         </footer>
       </div>
     </div>
