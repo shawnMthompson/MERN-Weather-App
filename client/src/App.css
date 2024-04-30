@@ -100,3 +100,9 @@ main{
 .desc{
     color: rgb(170, 225, 55);
 }
+footer{
+    text-align: center;
+    color: white;
+    margin-top: 50px;
+    text-transform: none;
+}
