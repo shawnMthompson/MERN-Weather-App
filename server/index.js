@@ -24,10 +24,10 @@ const WeatherData = mongoose.model('WeatherData', {
 // Route to handle the storing weather data in the database
 app.post('/api/weather', async (req, res) => {
   try {
-    // Extract weather data from request body
+    // Extract weather data from the request body
     const { city, country, temperature, description, icon } = req.body;
 
-    // Create a new document using the WeatherData model
+    // Creates a new document using the WeatherData model
     const weatherData = new WeatherData({
       city,
       country,

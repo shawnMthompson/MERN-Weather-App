@@ -61,7 +61,7 @@ function App() {
   // Save weather data to the database
   const saveWeatherData = async (data) => {
     try {
-      const response = await axios.post('http://localhost:5000/api/weather', {
+      const response = await axios.post('http://localhost:3000/api/weather', {
         city: data.name,
         country: data.sys.country,
         temperature: Math.floor(data.main.temp - 273),
@@ -209,7 +209,7 @@ function App() {
       </main>
       <div>
         <footer>
-          <p>Disclaimer: I was unable to get state codes working for this project with OpenWeatherAPI, which is why you may notice (City, US) instead of (City, State)</p>
+          <p>Disclaimer: I was unable to get state codes working for this project with OpenWeatherAPI, so I ended up having to use country codes. This is why you may need to enter (City, US) instead of (City, State) for cities within the US</p>
         </footer>
       </div>
     </div>
