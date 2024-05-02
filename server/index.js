@@ -8,9 +8,9 @@ const axios = require('axios');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// MongoDB connection URI
-const MONGODB_URI = process.env.MONGODB_URI;
-mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true });
+// MongoDB connection URI | The URI is stored in the .env file in the server directory
+const MongoDB_URI = process.env.MONGODB_URI;
+mongoose.connect(MongoDB_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 
 // Middleware to parse JSON data and enable CORS
 app.use(express.json());

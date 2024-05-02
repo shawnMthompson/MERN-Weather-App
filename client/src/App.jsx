@@ -7,7 +7,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './App.css';
 
-
+// API key for the OpenWeatherMap API | The API key is stored in the .env file in the client directory
 const apikey = process.env.REACT_APP_WEATHER_API_KEY;
 
 // App component
