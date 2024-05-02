@@ -95,6 +95,9 @@ main{
     margin: 6rem 0;
     text-align: center;
 }
+.dayF, .next{
+    padding: 5px;
+}
 .time,
 .date{
     color: rgb(190, 170, 250);
