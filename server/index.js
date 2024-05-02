@@ -1,16 +1,20 @@
+// Imports the required modules
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const axios = require('axios');
 
+// Create an Express application instance to port 3000
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+// MongoDB connection URI
 const MONGODB_URI = process.env.MONGODB_URI;
 mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 
-app.use(cors());
+// Middleware to parse JSON data and enable CORS
 app.use(express.json());
+app.use(cors());
 
 // Creates a Mongoose model for weather data
 const WeatherData = mongoose.model('WeatherData', {
