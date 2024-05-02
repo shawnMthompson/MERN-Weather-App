@@ -1,10 +1,10 @@
 // Imports the required modules
 const express = require('express');
-const mongoose = require('mongoose');
 const cors = require('cors');
 const axios = require('axios');
+const mongoose = require('mongoose');
 
-// Create an Express application instance to port 3000. Can be changed to most any port number (e.g. 5000).
+// Creates an Express application instance to port 3000. Can be changed to most any port number (e.g. 5000).
 const app = express();
 const PORT = process.env.PORT || 3000;
 
@@ -28,7 +28,7 @@ const WeatherData = mongoose.model('WeatherData', {
 // Route to handle the storing weather data in the database
 app.post('/api/weather', async (req, res) => {
   try {
-    // Extract weather data from the request body
+    // Extracts the weather data from the request body
     const { city, country, temperature, description, icon } = req.body;
 
     // Creates a new document using the WeatherData model
@@ -40,7 +40,7 @@ app.post('/api/weather', async (req, res) => {
       icon,
     });
 
-    // Save the weather data to the database
+    // Saves the weather data to the database
     await weatherData.save();
 
     // Responds with success message if successful, otherwise sends an error response
@@ -51,7 +51,7 @@ app.post('/api/weather', async (req, res) => {
   }
 });
 
-// Start the server on the specified port
+// Starts the server on the specified port
 app.listen(PORT, () => {
   console.log(`The server is running on port ${PORT}`);
 });
