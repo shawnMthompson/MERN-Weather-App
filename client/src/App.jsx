@@ -19,17 +19,17 @@ function App() {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position) => {
         const { latitude, longitude } = position.coords;
-        const url = `http://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apikey}&units=imperial`;
+        const URL = `http://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apikey}&units=imperial`;
 
-        fetchWeatherData(url);
+        fetchWeatherData(URL);
       });
     }
   }, []);
 
   // Fetches weather data from the OpenWeatherMap API using the provided URL.
-  const fetchWeatherData = async (url) => {
+  const fetchWeatherData = async (URL) => {
     try {
-      const response = await axios.get(url);
+      const response = await axios.get(URL);
       const data = response.data;
       console.log(data);
       weatherReport(data);
@@ -44,8 +44,8 @@ function App() {
   // Fetches the weather data based on the city name entered by the user.
   const searchByCity = async () => {
     try {
-      const urlsearch = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apikey}&units=imperial`;
-      const response = await axios.get(urlsearch);
+      const URLsearch = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apikey}&units=imperial`;
+      const response = await axios.get(URLsearch);
       const data = response.data;
       console.log(data);
       weatherReport(data);
@@ -75,10 +75,10 @@ function App() {
   };
 
   const weatherReport = async (data) => {
-    const urlcast = `http://api.openweathermap.org/data/2.5/forecast?q=${data.name}&appid=${apikey}&units=imperial`;
+    const URLcast = `http://api.openweathermap.org/data/2.5/forecast?q=${data.name}&appid=${apikey}&units=imperial`;
     try {
       // Fetches the forecast data
-      const response = await axios.get(urlcast);
+      const response = await axios.get(URLcast);
       const forecast = response.data;
       console.log(forecast.city);
       hourForecast(forecast);
@@ -86,8 +86,8 @@ function App() {
 
       // Displays the current weather data
       console.log(data);
-      document.getElementById('city').innerText = data.name + ', ' + data.sys.country;
-      console.log(data.name, data.sys.country);
+      document.getElementById('city').innerText = data.name + ', ' + data.sys.country;  // Displays the city and country code (e.g., New York, US) | Couldn't get State to work along with Mongoose with the API.
+      console.log(data.name, data.sys.country); 
 
       console.log(Math.floor(data.main.temp));
       document.getElementById('temperature').innerText = Math.floor(data.main.temp) + ' °F';
@@ -96,9 +96,9 @@ function App() {
       console.log(data.weather[0].description);
 
       // Display weather icon provided by the API
-      let icon1 = data.weather[0].icon;
-      let iconurl = "http://api.openweathermap.org/img/w/" + icon1 + ".png";
-      document.getElementById('img').src = iconurl;
+      let iconIMG = data.weather[0].icon;
+      let iconURL = "http://api.openweathermap.org/img/w/" + iconIMG + ".png";
+      document.getElementById('img').src = iconURL;
     } catch (error) {
       console.error('An error occured whilst fetching forecast data:', error);
     }
@@ -113,8 +113,8 @@ function App() {
       var date = new Date(forecast.list[i].dt * 1000);
       console.log((date.toLocaleTimeString(undefined, 'America/New_York')).replace(':00', ''));
 
-      let hourR = document.createElement('div');
-      hourR.setAttribute('class', 'hourF');
+      let hourForecast = document.createElement('div');
+      hourForecast.setAttribute('class', 'hourF');
 
       let div = document.createElement('div');
       let time = document.createElement('p');
@@ -131,9 +131,9 @@ function App() {
       desc.setAttribute('class', 'desc');
       desc.innerText = forecast.list[i].weather[0].description;
 
-      hourR.appendChild(div);
-      hourR.appendChild(desc);
-      document.querySelector('.templist').appendChild(hourR);
+      hourForecast.appendChild(div);
+      hourForecast.appendChild(desc);
+      document.querySelector('.templist').appendChild(hourForecast);
     }
   };
 

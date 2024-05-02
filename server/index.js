@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const axios = require('axios');
 
-// Create an Express application instance to port 3000
+// Create an Express application instance to port 3000. Can be changed to most any port number (e.g. 5000).
 const app = express();
 const PORT = process.env.PORT || 3000;
 
