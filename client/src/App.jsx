@@ -14,7 +14,7 @@ const apikey = process.env.REACT_APP_WEATHER_API_KEY;
 function App() {
   const [city, setCity] = useState('');
   const [setWeatherData] = useState(null);
-  // Fetch weather data based on the user's current location (if the permission is granted)
+  // Fetches the weather data based on the user's current location (if the permission is granted by the user)
   useEffect(() => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position) => {
@@ -41,7 +41,7 @@ function App() {
     }
   };
 
-  // Fetches weather data based on the city name entered by the user.
+  // Fetches the weather data based on the city name entered by the user.
   const searchByCity = async () => {
     try {
       const urlsearch = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apikey}&units=imperial`;
@@ -50,7 +50,7 @@ function App() {
       console.log(data);
       weatherReport(data);
       setWeatherData(data);
-      // Send data to backend for storage
+      // Sends the data to backend for storage
       saveWeatherData(data);
     } catch (error) {
       console.error('An error occured whilst fetching weather data:', error);
@@ -58,7 +58,7 @@ function App() {
     setCity('');
   };
 
-  // Save weather data to the database
+  // Saves the weather data to the database
   const saveWeatherData = async (data) => {
     try {
       const response = await axios.post('http://localhost:3000/api/weather', {
@@ -77,14 +77,14 @@ function App() {
   const weatherReport = async (data) => {
     const urlcast = `http://api.openweathermap.org/data/2.5/forecast?q=${data.name}&appid=${apikey}&units=imperial`;
     try {
-      // Fetch forecast data
+      // Fetches the forecast data
       const response = await axios.get(urlcast);
       const forecast = response.data;
       console.log(forecast.city);
       hourForecast(forecast);
       dayForecast(forecast);
 
-      // Display current weather data
+      // Displays the current weather data
       console.log(data);
       document.getElementById('city').innerText = data.name + ', ' + data.sys.country;
       console.log(data.name, data.sys.country);
@@ -104,17 +104,17 @@ function App() {
     }
   };
 
-  // Display hourly forecast
+  // Displays the hourly forecast
   const hourForecast = (forecast) => {
     document.querySelector('.templist').innerHTML = '';
-    // Display the next 12 hours forecast in 5, 3-hour intervals (including initial time)
+    // Displays the next 12 hours forecast in 5, 3-hour intervals (including initial time)
     // Provides the time, temperature, and weather description for each interval
     for (let i = 0; i < 5; i++) {
       var date = new Date(forecast.list[i].dt * 1000);
       console.log((date.toLocaleTimeString(undefined, 'America/New_York')).replace(':00', ''));
 
       let hourR = document.createElement('div');
-      hourR.setAttribute('class', 'next');
+      hourR.setAttribute('class', 'hourF');
 
       let div = document.createElement('div');
       let time = document.createElement('p');
@@ -122,7 +122,7 @@ function App() {
       time.innerText = (date.toLocaleTimeString(undefined, 'America/New_York')).replace(':00', '');
 
       let temp = document.createElement('p');
-      temp.innerText = Math.floor((forecast.list[i].main.temp_max)) + ' °F' + ' / ' + Math.floor((forecast.list[i].main.temp_min)) + ' °F';
+      temp.innerText = Math.floor((forecast.list[i].main.temp_max)) + ' °F' + ' | ' + Math.floor((forecast.list[i].main.temp_min)) + ' °F';
 
       div.appendChild(time);
       div.appendChild(temp);
@@ -137,8 +137,8 @@ function App() {
     }
   };
 
-  // Display daily forecast
-  // Displays the forecast for the next 5 days in 24-hour intervals
+  // Displays the daily forecast
+  // Displays the forecast for the next 5 days in 24-hour intervals | I had isses with the API and I couldn't manage to get the 7-day forecast to work.
   const dayForecast = (forecast) => {
     document.querySelector('.weekF').innerHTML = '';
     for (let i = 0; i < forecast.list.length; i +=8) {
@@ -152,7 +152,7 @@ function App() {
       div.appendChild(day);
 
       let temp = document.createElement('p');
-      temp.innerText = Math.floor((forecast.list[i].main.temp_max)) + ' °F' + ' / ' + Math.floor((forecast.list[i].main.temp_min)) + ' °F';
+      temp.innerText = Math.floor((forecast.list[i].main.temp_max)) + ' °F' + ' | ' + Math.floor((forecast.list[i].main.temp_min)) + ' °F';
       div.appendChild(temp);
 
       let description = document.createElement('p');
@@ -195,7 +195,7 @@ function App() {
   
         <div className="current-weather">
           <h2 id="city"></h2>
-          <div className="temp-box">
+          <div className="temperature-box">
             <img src="/weathericon.png" alt="" id="img" />
             <p id="temperature"></p>
           </div>
