@@ -11,6 +11,7 @@ Follow these steps to replicate this project on your local machine:
 4. Create a `.env` file in both the root of the client folder and of the server folder.
 5. Open the `.env` file in the client folder and add your OpenWeatherMap API key like this: REACT_APP_WEATHER_API_KEY=<your-api-key>
 6. Open the `.env` file in the server folder and add your MongoDB URI like this: MONGODB_URI=<your-mongodb_uri>
+   * For step 6, register for an account on MongoDB Atlas and get started with a free DB server. You will be provided with a uri that you will attach to the .env file described in step 6.
 7. Change directory `cd` to the client folder: `cd client`
 8. Start the application by running `npm start`
 9. Direct yourself to localhost:3000 on a JavaScript-enabled browser to view/interact with the application.
